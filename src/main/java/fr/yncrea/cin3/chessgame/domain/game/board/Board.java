@@ -26,4 +26,8 @@ public class Board {
         return ImmutableList.copyOf(tiles);
     }
 
+    /*public static Board createStandardBoard(){
+
+    }*/
+
 }

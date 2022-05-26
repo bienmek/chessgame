@@ -1,37 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/index.css" rel="stylesheet" />
+    <link href="/css/menu.css" rel="stylesheet" />
     <title>Title</title>
 </head>
 <body>
 
-    <nav>
-        <ul>
-            <li><span class="home">Home</span></li>
+    <div th:replace="/menu :: navbar">
 
-            <li><span class="play">Play</span></li>
-
-            <li><span class="profil">Profil</span></li>
-
-            <li><span class="friend">Friends</span></li>
-
-            <li>
-                <span class="sign-up">Sign up</span>
-                <span class="log-in">Log in</span>
-            </li>
-
-            <li><i></i></li>
-        </ul>
-    </nav>
-
+    </div>
     <div class="center-body">
         <div class="text-body">
             <div class="main-title">
-                <a>Play Chess</a>
-                <a>for Free</a>
-                <a>Right Now !</a>
+                <span>Play Chess</span>
+                <span>for Free</span>
+                <span>Right Now !</span>
             </div>
             <div class="sec-text">
                 <div class="play-online">Play Online</div>

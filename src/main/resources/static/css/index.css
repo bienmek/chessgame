@@ -3,84 +3,6 @@ body {
 
     background-color: #1c2841;
 }
-
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 17vh;
-    margin: 0;
-    color: rgb(192, 191, 191);
-    background-color: #111827;
-    font-size: 3vh;
-}
-ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    list-style-type: none;
-    font-weight: bold;
-}
-
-li {
-    margin-top: 2vh;
-    margin-left: -4vh;
-}
-
-.home:hover {
-    cursor: pointer;
-    color: rgb(119, 117, 117);
-}
-.play:hover {
-    cursor: pointer;
-    color: rgb(119, 117, 117);
-}
-.friend:hover {
-    cursor: pointer;
-    color: rgb(119, 117, 117);
-}
-.profil:hover {
-    cursor: pointer;
-    color: rgb(119, 117, 117);
-}
-
-.sign-up {
-    background-color: gray;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5vh;
-    width: 15vh;
-    margin-top: 2vh;
-    border-radius: 10px;
-    margin-left: -1.5vh;
-}
-
-.sign-up:hover {
-    background-color: darkgrey;
-    cursor: pointer;
-}
-
-.log-in {
-    background-color: #6eaa06;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 5vh;
-    width: 15vh;
-    margin-top: 1vh;
-    border-radius: 10px;
-    margin-left: -1.5vh;
-}
-
-.log-in:hover {
-    background-color: #88cf0c;
-    cursor: pointer;
-}
-
 .center-body {
     display: flex;
     flex-direction: row;
@@ -241,9 +163,5 @@ li {
 img{
     height: 8.5vh;
     width: 8.5vh;
-}
-
-img:hover{
-    cursor: grab;
 }
 

@@ -1,6 +1,7 @@
 package fr.yncrea.cin3.chessgame.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,8 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class IndexController {
 
     @GetMapping("/")
-    public String home(@RequestParam(defaultValue = "World") String name, ModelMap modelMap){
-        modelMap.put("name", name);
+    public String index(){
         return "index";
+    }
+    @GetMapping("/play")
+    public String play(Model model){
+
+        model.addAttribute("message", "Les mecs");
+
+        return "play";
     }
 }

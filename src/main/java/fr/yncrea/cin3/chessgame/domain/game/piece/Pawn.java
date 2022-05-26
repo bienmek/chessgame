@@ -1,5 +1,6 @@
 package fr.yncrea.cin3.chessgame.domain.game.piece;
 
+import com.google.common.collect.ImmutableList;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.BoardUtils;
@@ -61,6 +62,6 @@ public class Pawn extends Piece{
                 }
             }
         }
-        return Collections.unmodifiableList(legalMoves);
+        return ImmutableList.copyOf(legalMoves);
     }
 }

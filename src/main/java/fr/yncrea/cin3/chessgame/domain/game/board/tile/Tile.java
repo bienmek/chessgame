@@ -1,5 +1,7 @@
 package fr.yncrea.cin3.chessgame.domain.game.board.tile;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 
 import java.util.Collection;
@@ -24,7 +26,7 @@ public abstract class Tile {
         for(int i=0;i<64;++i){
             emptyTileMap.put(i, new EmptyTile(i));
         }
-        return Collections.unmodifiableMap(emptyTileMap);
+        return ImmutableMap.copyOf(emptyTileMap);
     }
     public abstract boolean isTileOccupied();
 

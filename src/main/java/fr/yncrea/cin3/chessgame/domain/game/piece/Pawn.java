@@ -31,12 +31,17 @@ public class Pawn extends Piece{
             if(!BoardUtils.isValidTileCoord(destCoord)) continue;
 
             if(current == 8 && !board.getTile(destCoord).isTileOccupied()){
-
                 legalMoves.add(new MajorMove(board, this, destCoord));
             } else if(current == 16 && this.isFirstMove() &&
                     (BoardUtils.SECOND_ROW[this.piecePosition] && this.getPieceAlliance().isBlack())||
                     (BoardUtils.SEVENTH_ROW[this.piecePosition] && this.getPieceAlliance().isWhite())){
                 final int behindDestcoord = this.piecePosition + (this.pieceAlliance.getDirection()*8);
+                if(!board.getTile(behindDestcoord).isTileOccupied() &&
+                        !board.getTile(destCoord).isTileOccupied()){
+                    legalMoves.add(new MajorMove(board, this, destCoord));
+
+
+                }
 
             }
 

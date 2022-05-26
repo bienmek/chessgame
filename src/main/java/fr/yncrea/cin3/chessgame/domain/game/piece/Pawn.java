@@ -8,11 +8,12 @@ import fr.yncrea.cin3.chessgame.domain.game.board.move.Move;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class Pawn extends Piece{
 
-    private final static int[] POSSIBLE_MOVES = {8, 16};
+    private final static int[] POSSIBLE_MOVES = {8, 16, 7, 9};
 
 
     public Pawn(final int piecePosition, final Alliance pieceAlliance) {
@@ -39,15 +40,27 @@ public class Pawn extends Piece{
                 if(!board.getTile(behindDestcoord).isTileOccupied() &&
                         !board.getTile(destCoord).isTileOccupied()){
                     legalMoves.add(new MajorMove(board, this, destCoord));
-
-
                 }
-
+            } else if(current == 7 &&
+                    !((BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite()) ||
+                    (BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))){
+                if(board.getTile(destCoord).isTileOccupied()){
+                    final Piece pieceOn = board.getTile(destCoord).getPiece();
+                    if(this.pieceAlliance != pieceOn.getPieceAlliance()){
+                        legalMoves.add(new MajorMove(board, this, destCoord));
+                    }
+                }
+            }else if(current == 9 &&
+                    !((BoardUtils.FIRST_COLUMN[this.piecePosition] && this.pieceAlliance.isWhite()) ||
+                     (BoardUtils.EIGHTH_COLUMN[this.piecePosition] && this.pieceAlliance.isBlack()))){
+                if(board.getTile(destCoord).isTileOccupied()){
+                    final Piece pieceOn = board.getTile(destCoord).getPiece();
+                    if(this.pieceAlliance != pieceOn.getPieceAlliance()){
+                        legalMoves.add(new MajorMove(board, this, destCoord));
+                    }
+                }
             }
-
-
-
         }
-        return null;
+        return Collections.unmodifiableList(legalMoves);
     }
 }

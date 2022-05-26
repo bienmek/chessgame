@@ -1,0 +1,249 @@
+body {
+    font-family: Montserrat, sans-serif;
+
+    background-color: #1c2841;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 17vh;
+    margin: 0;
+    color: rgb(192, 191, 191);
+    background-color: #111827;
+    font-size: 3vh;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+li {
+    margin-top: 2vh;
+    margin-left: -4vh;
+}
+
+.home:hover {
+    cursor: pointer;
+    color: rgb(119, 117, 117);
+}
+.play:hover {
+    cursor: pointer;
+    color: rgb(119, 117, 117);
+}
+.friend:hover {
+    cursor: pointer;
+    color: rgb(119, 117, 117);
+}
+.profil:hover {
+    cursor: pointer;
+    color: rgb(119, 117, 117);
+}
+
+.sign-up {
+    background-color: gray;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    width: 15vh;
+    margin-top: 2vh;
+    border-radius: 10px;
+    margin-left: -1.5vh;
+}
+
+.sign-up:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+}
+
+.log-in {
+    background-color: #6eaa06;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+    width: 15vh;
+    margin-top: 1vh;
+    border-radius: 10px;
+    margin-left: -1.5vh;
+}
+
+.log-in:hover {
+    background-color: #88cf0c;
+    cursor: pointer;
+}
+
+.center-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    margin-left: 10vh;
+}
+
+.text-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 65vh;
+}
+.main-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 8vh;
+    font-weight: bolder;
+    color: white;
+    z-index: 100;
+    margin-top: 6vh;
+    height: 5vh;
+    width: 65vh;
+}
+
+.sec-text {
+    margin-top: 10vh;
+}
+
+.play-online {
+    text-align: center;
+    font-size: 6vh;
+    font-weight: bolder;
+    background-color: #6eaa06;
+    color: white;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    width: 60vh;
+
+    margin-top: 6vh;
+    border-radius: 10px;
+}
+
+.play-online:hover {
+    background-color: #88cf0c;
+    cursor: pointer;
+}
+
+.training {
+    text-align: center;
+    font-size: 6vh;
+    font-weight: bolder;
+    background-color: gray;
+    color: white;
+    width: 60vh;
+    margin-top: 3vh;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 10px;
+}
+
+.training:hover {
+    background-color: darkgrey;
+    cursor: pointer;
+}
+
+.chessboard {
+    display: flex;
+    flex-flow: row wrap;
+    border: 4px solid;
+    border-color: black;
+    height: 64vh;
+    width: 64vh;
+    margin-left: 5vh;
+}
+
+.black-case {
+    background-color: #1c2841;
+    color: white;
+    font-size: 1.7vh;
+    font-weight: bold;
+    height: 8vh;
+    width: 8vh;
+}
+
+.white-case {
+    background-color: white;
+    color: #111827;
+    font-size: 1.7vh;
+    font-weight: bold;
+    height: 8vh;
+    width: 8vh;
+}
+
+.nb{
+
+    margin-left: 0.3vh;
+    margin-top: 0.5vh;
+}
+
+.lt{
+    flex-wrap: nowrap;
+    margin-left: 6.7vh;
+    margin-top: 6vh;
+    height: 8vh;
+    width: 8vh;
+}
+
+.slt{
+    flex-wrap: nowrap;
+    margin-left: 6.7vh;
+    margin-top: 3.6vh;
+    height: 8vh;
+    width: 8vh;
+}
+
+.white-back{
+    position: relative;
+    margin-top: -14.2vh;
+    margin-left: -0.3vh;
+}
+
+.black-back{
+    margin-top: -0.3vh;
+    margin-left: -0.2vh;
+}
+
+.white-front{
+    margin-top: -0.5vh;
+    margin-left: -0.3vh;
+}
+
+.black-front{
+    margin-top: -0.5vh;
+    margin-left: -0.3vh;
+}
+.white-p{
+    margin-top: -2.9vh;
+    margin-left: -0.3vh;
+}
+
+.black-p{
+    margin-top: -2.9vh;
+    margin-left: -0.3vh;
+}
+
+.black-front-p{
+    margin-top: -2.9vh;
+    margin-left: -0.3vh;
+}
+
+img{
+    height: 8.5vh;
+    width: 8.5vh;
+}
+
+img:hover{
+    cursor: grab;
+}
+

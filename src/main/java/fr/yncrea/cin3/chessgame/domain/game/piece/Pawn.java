@@ -17,7 +17,7 @@ public class Pawn extends Piece{
     private final static int[] POSSIBLE_MOVES = {8, 16, 7, 9};
 
 
-    public Pawn(final int piecePosition, final Alliance pieceAlliance) {
+    public Pawn(final Alliance pieceAlliance, final int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 

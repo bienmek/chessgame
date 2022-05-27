@@ -18,7 +18,7 @@ public class Queen extends Piece{
 
     private final static int[] POSSIBLE_MOVES_VECTOR = {-9, -8, -7, -1, 1, 7, 8, 9};
 
-    public Queen(int piecePosition, Alliance pieceAlliance) {
+    public Queen(Alliance pieceAlliance, int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 

@@ -18,7 +18,7 @@ public class Bishop extends Piece{
 
     private final static int[] POSSIBLE_MOVES_VECTOR = {-9, -7, 7, 9};
 
-    public Bishop(int piecePosition, Alliance pieceAlliance) {
+    public Bishop(Alliance pieceAlliance, int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 

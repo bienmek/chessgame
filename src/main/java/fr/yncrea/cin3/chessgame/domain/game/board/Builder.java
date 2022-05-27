@@ -19,6 +19,10 @@ public class Builder {
         return this;
     }
 
+    public Map<Integer, Piece> getBoardConfig(){
+        return this.boardConfig;
+    }
+
     public Builder setMoveMaker(final Alliance nextMoveMaker){
         this.nextMoveMaker = nextMoveMaker;
         return this;

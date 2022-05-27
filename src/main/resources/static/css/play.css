@@ -49,10 +49,12 @@ h1{
 }
 
 .dynamic{
+    text-align: center;
     font-size: 2vh;
-    color: white;
     font-weight: bold;
     margin-top: 10vh;
+    height:2.3vh;
+    width:3.6vh;
 }
 
 .black-case {

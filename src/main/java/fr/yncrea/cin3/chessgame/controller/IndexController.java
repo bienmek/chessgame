@@ -1,5 +1,7 @@
 package fr.yncrea.cin3.chessgame.controller;
 
+import fr.yncrea.cin3.chessgame.domain.game.Alliance;
+import fr.yncrea.cin3.chessgame.domain.game.piece.Pawn;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,8 +17,6 @@ public class IndexController {
     }
     @GetMapping("/play")
     public String play(Model model){
-
-        model.addAttribute("message", "Les mecs");
 
         return "play";
     }

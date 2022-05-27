@@ -5,6 +5,7 @@ import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.Move;
 
 import java.util.Collection;
+import java.util.List;
 
 public abstract class Piece {
 
@@ -27,7 +28,10 @@ public abstract class Piece {
     }
     public abstract Collection<Move> calcLegalMoves(final Board board);
 
+    public abstract List<Move> getLegalMoves();
+
     protected boolean isFirstMove() {
         return this.isFirstMove;
     }
+
 }

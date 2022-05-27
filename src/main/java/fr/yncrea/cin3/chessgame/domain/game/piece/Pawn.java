@@ -2,6 +2,7 @@ package fr.yncrea.cin3.chessgame.domain.game.piece;
 
 import com.google.common.collect.ImmutableList;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
+import fr.yncrea.cin3.chessgame.domain.game.PieceType;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.BoardUtils;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.MajorMove;
@@ -16,15 +17,21 @@ public class Pawn extends Piece{
 
     private final static int[] POSSIBLE_MOVES = {8, 16, 7, 9};
 
+    private List<Move> legalMoves;
+
 
     public Pawn(final Alliance pieceAlliance, final int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
 
+    public List<Move> getLegalMoves(){
+        return this.legalMoves;
+    }
+
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {
 
-        final List<Move> legalMoves = new ArrayList<>();
+        legalMoves = new ArrayList<>();
 
         for(final int current: POSSIBLE_MOVES){
 
@@ -63,5 +70,10 @@ public class Pawn extends Piece{
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+
+    @Override
+    public String toString(){
+        return PieceType.PAWN.toString();
     }
 }

@@ -1,27 +1,23 @@
 package fr.yncrea.cin3.chessgame.controller;
 
-import fr.yncrea.cin3.chessgame.domain.game.Alliance;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.Builder;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.Move;
-import fr.yncrea.cin3.chessgame.domain.game.piece.Pawn;
 import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class IndexController {
+@RequestMapping("/")
+public class GameController {
 
-    @GetMapping("/")
-    public String index(){
-        return "index";
+    @GetMapping("/play")
+    public String play(Model model){
+        return "play";
     }
-
-
 }

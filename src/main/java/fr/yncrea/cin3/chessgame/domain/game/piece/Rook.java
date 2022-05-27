@@ -2,6 +2,7 @@ package fr.yncrea.cin3.chessgame.domain.game.piece;
 
 import com.google.common.collect.ImmutableList;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
+import fr.yncrea.cin3.chessgame.domain.game.PieceType;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.BoardUtils;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.AttackMove;
@@ -18,6 +19,8 @@ public class Rook extends Piece{
 
     private final static int[] POSSIBLE_MOVES_VECTOR = {-8, -1, 1, 8};
 
+    private List<Move> legalMoves;
+
     public Rook(Alliance pieceAlliance, int piecePosition) {
         super(piecePosition, pieceAlliance);
     }
@@ -25,7 +28,7 @@ public class Rook extends Piece{
     @Override
     public Collection<Move> calcLegalMoves(final Board board) {
 
-        final List<Move> legalMoves = new ArrayList<>();
+        legalMoves = new ArrayList<>();
 
         for(final int current: POSSIBLE_MOVES_VECTOR){
             int destCoord = this.piecePosition;
@@ -55,6 +58,16 @@ public class Rook extends Piece{
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+
+    @Override
+    public List<Move> getLegalMoves() {
+        return this.legalMoves;
+    }
+
+    @Override
+    public String toString(){
+        return PieceType.ROOK.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPos, final int offset){

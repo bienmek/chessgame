@@ -2,6 +2,7 @@ package fr.yncrea.cin3.chessgame.domain.game.piece;
 
 import com.google.common.collect.ImmutableList;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
+import fr.yncrea.cin3.chessgame.domain.game.PieceType;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.BoardUtils;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.AttackMove;
@@ -17,6 +18,7 @@ import java.util.List;
 public class King  extends Piece{
 
     private final static int[] POSSIBLE_MOVES = {-9, -8, -7, -1, 1, 7, 8, 9};
+    private List<Move> legalMoves;
 
     public King(Alliance pieceAlliance, int piecePosition) {
         super(piecePosition, pieceAlliance);
@@ -25,7 +27,7 @@ public class King  extends Piece{
     @Override
     public Collection<Move> calcLegalMoves(Board board) {
 
-        final List<Move> legalMoves = new ArrayList<>();
+        legalMoves = new ArrayList<>();
 
         for(final int current: POSSIBLE_MOVES){
             final int destCoord = this.piecePosition + current;
@@ -49,6 +51,16 @@ public class King  extends Piece{
             }
         }
         return ImmutableList.copyOf(legalMoves);
+    }
+
+    @Override
+    public List<Move> getLegalMoves() {
+        return this.legalMoves;
+    }
+
+    @Override
+    public String toString(){
+        return PieceType.KING.toString();
     }
 
     private static boolean isFirstColumnExclusion(final int currentPos, final int offset){

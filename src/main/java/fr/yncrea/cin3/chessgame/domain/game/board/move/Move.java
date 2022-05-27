@@ -16,5 +16,9 @@ public abstract class Move {
         this.destCoord = destCoord;
     }
 
+    public int getDestCoord(){
+        return this.destCoord;
+    }
+
 
 }

@@ -9,6 +9,11 @@ public final class EmptyTile extends Tile {
     }
 
     @Override
+    public String toString(){
+        return "-";
+    }
+
+    @Override
     public boolean isTileOccupied() {
         return false;
     }

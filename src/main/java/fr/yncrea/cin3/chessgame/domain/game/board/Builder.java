@@ -3,6 +3,7 @@ package fr.yncrea.cin3.chessgame.domain.game.board;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
 import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Builder {
@@ -11,7 +12,7 @@ public class Builder {
     Alliance nextMoveMaker;
 
     public Builder(){
-
+        this.boardConfig = new HashMap<>();
     }
 
     public Builder setPiece(final Piece piece){
@@ -23,9 +24,8 @@ public class Builder {
         return this.boardConfig;
     }
 
-    public Builder setMoveMaker(final Alliance nextMoveMaker){
+    public void setMoveMaker(final Alliance nextMoveMaker){
         this.nextMoveMaker = nextMoveMaker;
-        return this;
     }
 
     public Board build(){

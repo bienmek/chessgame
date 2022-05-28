@@ -3,6 +3,7 @@ package fr.yncrea.cin3.chessgame.controller;
 import fr.yncrea.cin3.chessgame.domain.game.board.Board;
 import fr.yncrea.cin3.chessgame.domain.game.board.Builder;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.Move;
+import fr.yncrea.cin3.chessgame.domain.game.board.tile.Tile;
 import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,27 +18,65 @@ import java.util.List;
 @RequestMapping("/rq")
 public class GameRequestController {
 
-    @GetMapping("/game")
-    public String PieceSelection(@RequestParam int origin) {
+    private final Builder builder = Board.createStandardBoard();
 
-        Builder builder = Board.createStandardBoard();
+    private final Board board = builder.build();
 
-        Piece piece = builder.getBoardConfig().get(origin);
-        piece.calcLegalMoves(builder.build());
+    private Piece piece;
 
-        List<Move> moves= piece.getLegalMoves();
-        List<Integer> destcoord = new ArrayList<>();
+    private List<Move> moves;
+
+    private int origin;
+
+    private final List<Integer> destcoord = new ArrayList<>();
+
+    @GetMapping("/init")
+    public void init(@RequestParam String piecesCoord){
+
+        String[] single = piecesCoord.split("\\.");
+        for(String s: single)
+            board.getTile(Integer.parseInt(s)).changeState(board.getTile(Integer.parseInt(s)).getPiece(), true);
+    }
+
+    @GetMapping("/plm")
+    public String getPieceLM(@RequestParam int origin) {
+
+        this.origin = origin;
+        piece = builder.getBoardConfig().get(this.origin);
+        System.out.println(board.getTile(this.origin).isTileOccupied());
+
+
+        piece.calcLegalMoves(board);
+
+        if(moves != null)
+            moves.clear();
+
+        destcoord.clear();
+
+        moves = piece.getLegalMoves();
 
         for(Move m: moves)
             destcoord.add(m.getDestCoord());
 
         StringBuilder message = new StringBuilder();
 
-        for (Integer integer : destcoord) {
+        for (Integer integer : destcoord){
             message.append(integer).append(".");
         }
 
         message.append("/").append(origin);
+
         return message.toString();
+    }
+
+    @GetMapping("/mvt")
+    public void setPiecePosition(@RequestParam int dest){
+        if(piece != null){
+            builder.removePiece(piece);
+            piece.setPiecePosition(dest);
+            builder.setPiece(piece);
+            board.getTile(origin).changeState(null, false);
+            board.getTile(dest).changeState(piece, true);
+        }
     }
 }

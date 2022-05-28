@@ -20,6 +20,11 @@ public class Builder {
         return this;
     }
 
+    public Builder removePiece(final Piece piece){
+        this.boardConfig.remove(piece.getPiecePosition(), piece);
+        return this;
+    }
+
     public Map<Integer, Piece> getBoardConfig(){
         return this.boardConfig;
     }

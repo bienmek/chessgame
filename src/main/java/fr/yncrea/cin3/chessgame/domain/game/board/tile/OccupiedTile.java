@@ -4,7 +4,8 @@ import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 
 public final class OccupiedTile extends Tile {
 
-    private final Piece pieceOnTile;
+    private Piece pieceOnTile;
+    private boolean state;
 
     OccupiedTile(int tileCoordinate, Piece pieceOnTile){
         super(tileCoordinate);
@@ -18,11 +19,17 @@ public final class OccupiedTile extends Tile {
 
     @Override
     public boolean isTileOccupied() {
-        return true;
+        return this.state;
     }
 
     @Override
     public Piece getPiece() {
         return this.pieceOnTile;
+    }
+
+    @Override
+    public void changeState(Piece piece, boolean state) {
+        this.pieceOnTile = piece;
+        this.state = state;
     }
 }

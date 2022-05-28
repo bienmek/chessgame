@@ -3,6 +3,7 @@ package fr.yncrea.cin3.chessgame.domain.game.board;
 import com.google.common.collect.ImmutableList;
 import fr.yncrea.cin3.chessgame.domain.game.Alliance;
 import fr.yncrea.cin3.chessgame.domain.game.board.move.Move;
+import fr.yncrea.cin3.chessgame.domain.game.board.tile.EmptyTile;
 import fr.yncrea.cin3.chessgame.domain.game.board.tile.Tile;
 import fr.yncrea.cin3.chessgame.domain.game.piece.*;
 
@@ -41,7 +42,6 @@ public class Board {
         return builder.toString();
     }
 
-
     private Collection<Move> calcLegalMoves(Collection<Piece> pieces) {
         final List<Move> legalMoves = new ArrayList<>();
         for(final Piece piece: pieces){
@@ -67,6 +67,9 @@ public class Board {
     public Tile getTile(final int tileCoord) {
         return gameBoard.get(tileCoord);
     }
+    public void setTile(int tileCoord){
+        this.gameBoard.add(new EmptyTile(tileCoord));
+    }
 
     private static List<Tile> createGameBoard(final Builder builder){
         final Tile[] tiles = new Tile[BoardUtils.NUM_TILES];
@@ -74,11 +77,6 @@ public class Board {
             tiles[i] = Tile.createTile(i, builder.boardConfig.get(i));
         }
         return ImmutableList.copyOf(tiles);
-    }
-
-    public Map<Integer, Piece> getBoardConfig(){
-        Builder builder = new Builder();
-        return builder.boardConfig;
     }
 
     public static Builder createStandardBoard(){
@@ -118,7 +116,7 @@ public class Board {
         builder.setPiece(new Knight(Alliance.WHITE, 62));
         builder.setPiece(new Rook(Alliance.WHITE, 63));
         //white to move
-        builder.setMoveMaker(Alliance.WHITE);
+        builder.setMoveMaker(Alliance.BLACK);
         //build the board
         return builder;
     }

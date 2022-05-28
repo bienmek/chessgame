@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class Piece {
 
-    protected final int piecePosition;
+    protected int piecePosition;
     protected final Alliance pieceAlliance;
     protected final boolean isFirstMove;
 
@@ -21,6 +21,10 @@ public abstract class Piece {
 
     public int getPiecePosition(){
         return this.piecePosition;
+    }
+
+    public void setPiecePosition(int piecePosition){
+        this.piecePosition = piecePosition;
     }
 
     public Alliance getPieceAlliance(){

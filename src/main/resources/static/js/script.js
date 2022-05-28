@@ -16,57 +16,96 @@ for(let i=0;i<tiles.length;++i) {
         h--
 }
 
+
+
+
+function getId(tile) {
+    for(let i=0;i<tiles.length;++i) {
+        const ctile = tiles.item(i);
+        if(tile === ctile) return i
+        if (ctile.hasChildNodes()) {
+            const img = ctile.children.item(0)
+            if(tile === img) return i
+        }
+    }
+}
+
+getAllImg()
+
+function getAllImg(){
+    let out = "";
+    for(let i=0;i<tiles.length;++i) {
+        const ctile = tiles.item(i);
+        if (ctile.hasChildNodes()) {
+            out+= i + '.'
+        }
+    }
+    const rq = new XMLHttpRequest()
+    rq.open("GET", "http://localhost:8080/rq/init?piecesCoord="+out)
+    rq.send()
+}
+
 /*
 Handle the pieces movement
  */
+
+let dest = null
+let origin = null
 for(let i=0;i<tiles.length;++i){
     const ctile = tiles.item(i);
     if (ctile.hasChildNodes()) {
-        const buff = ctile.children
-        for (let j = 0; j < buff.length; ++j) {
-            if (buff.item(j).children.length > 0) {
-                const img = buff.item(j).children.item(0);
-                img.addEventListener("click", function () {
-                    const xhttp = new XMLHttpRequest();
-                    xhttp.open("GET", "http://localhost:8080/rq/game?origin=" + i)
-                    xhttp.send()
-                    xhttp.onload = function () {
-                        const dest = xhttp.responseText.split('.')
-                        const origin = xhttp.responseText.split('/')[1]
+        const img = ctile.children.item(0)
+        img.addEventListener("click", function OnclickImages() {
 
-                        for (let i = 0; i < dest.length; ++i) {
+            if(dest != null)
+                for (let i = 0; i < dest.length; ++i) {
+                    tiles.item(dest[i]).style.removeProperty("background")
+                    tiles.item(dest[i]).style.removeProperty("cursor")
+                    tiles.item(dest[i]).removeEventListener("click", this)
+                }
 
-                            const target = tiles.item(dest[i])
-                            target.style.cursor = "pointer"
+            if(origin != null)
+                tiles.item(origin).removeEventListener("click", this)
 
-                            if (target.getAttribute("class") === "white-case") {
-                                target.style.background = "rgb(161,161,161)";
-                                target.style.background = "radial-gradient(circle, rgba(161,161,161,1) 24%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%)";
-                            } else if (target.getAttribute("class") === "black-case") {
-                                target.style.background = "rgb(161,161,161)";
-                                target.style.background = "radial-gradient(circle, rgba(161,161,161,1) 24%, rgba(28,40,65,1) 25%, rgba(28,40,65,1) 100%)";
-                            }
+            const xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "http://localhost:8080/rq/plm?origin=" + getId(img))
+            xhttp.send()
+            xhttp.onload = function () {
+                dest = xhttp.responseText.split('.')
+                origin = xhttp.responseText.split('/')[1]
 
-                            target.addEventListener("click", function () {
+                for (let i = 0; i < dest.length; ++i) {
+                    const target = tiles.item(dest[i])
 
-                                const buff = tiles.item(origin).children
-                                for (let i = 0; i < buff.length; ++i) {
-                                    if (buff.item(i).children.length > 0) {
-                                        const img = buff.item(i).children.item(0)
-                                        img.remove()
-                                        for (let i = 0; i < dest.length; ++i) {
-                                            tiles.item(dest[i]).style.removeProperty("background")
-                                            tiles.item(dest[i]).style.removeProperty("cursor")
-                                        }
-                                        target.appendChild(img)
-                                    }
-                                }
-                            })
-                        }
+                    target.style.cursor = "pointer"
+
+                    if (target.getAttribute("class") === "white-case") {
+                        target.style.background = "rgb(161,161,161)";
+                        target.style.background = "radial-gradient(circle, rgba(161,161,161,1) 24%, rgba(255,255,255,1) 25%, rgba(255,255,255,1) 100%)";
+                    } else if (target.getAttribute("class") === "black-case") {
+                        target.style.background = "rgb(161,161,161)";
+                        target.style.background = "radial-gradient(circle, rgba(161,161,161,1) 24%, rgba(28,40,65,1) 25%, rgba(28,40,65,1) 100%)";
                     }
-                })
+
+                    target.addEventListener("click", function OnclickTiles() {
+                        const buff = tiles.item(origin).children
+                        const img = buff.item(0)
+                        if(img != null){
+                            img.remove()
+                            const rq = new XMLHttpRequest();
+                            rq.open("GET", "http://localhost:8080/rq/mvt?dest=" + getId(target))
+                            rq.send()
+                            for (let i = 0; i < dest.length; ++i) {
+                                tiles.item(dest[i]).style.removeProperty("background")
+                                tiles.item(dest[i]).style.removeProperty("cursor")
+                                tiles.item(dest[i]).removeEventListener("click", this)
+                            }
+                            target.appendChild(img)
+                        }
+                    })
+                }
             }
-        }
+        })
     }
 }
 

@@ -1,11 +1,8 @@
 package fr.yncrea.cin3.chessgame.domain.game.board.tile;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import fr.yncrea.cin3.chessgame.domain.game.piece.Piece;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,5 +28,8 @@ public abstract class Tile {
     public abstract boolean isTileOccupied();
 
     public abstract Piece getPiece();
+
+    public abstract void changeState(Piece piece, boolean state);
+
 
 }

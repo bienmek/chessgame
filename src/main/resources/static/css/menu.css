@@ -1,7 +1,9 @@
 nav {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     height: 100vh;
     width: 17vh;
     margin: 0;
@@ -16,7 +18,6 @@ a{
     color: rgb(192, 191, 191);
 }
 ul {
-
     position: fixed;
     display: flex;
     flex-direction: column;

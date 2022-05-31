@@ -1,0 +1,79 @@
+
+<div th:fragment="navbar">
+    <nav>
+        <ul>
+            <li><span href="/" class="home"><a th:href="@{/}">Home</a></span></li>
+
+            <li><span class="play"><a th:href="@{/play}">Play</a></span></li>
+
+            <li><span class="profil"><a th:href="@{/profil?err=none}">Profil</a></span></li>
+
+            <li><span class="friend">Friends</span></li>
+
+            <li>
+                <span class="sign-up">Sign up</span>
+                <span class="log-in">Log in</span>
+            </li>
+
+            <li><i></i></li>
+        </ul>
+    </nav>
+</div>
+<div th:fragment="login-signup">
+
+    <div class="dark"> </div>
+    <div class="suc-content">
+        <div class="sign-up-screen">
+                    <span class="suc-title">
+                        Sign up Now !
+                    </span>
+
+            <form action="#" th:action="@{/profil}" method="POST" th:object="${form}">
+                <input type="hidden" th:field="*{id}">
+                <div class="suc-element">
+                    <span class="suc-sub">Name</span>
+                    <input type="text" class="suc-input" placeholder="Enter a name" th:field="*{username}"/>
+                    <span class="form-error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name size error</span>
+                </div>
+
+                <div class="suc-element">
+                    <span class="suc-sub">E-mail</span>
+                    <input type="email" class="suc-input" placeholder="Enter your email" th:field="*{email}"/>
+                </div>
+
+                <div class="suc-element">
+                    <span class="suc-sub">Password</span>
+                    <input type="password" class="suc-input" placeholder="Enter your password" th:field="*{password}"/>
+                    <span class="form-error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password size error</span>
+                </div>
+                <div class="suc-element"><button type="submit" class="suc-btn">Sign up</button></div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div class="lic-content">
+        <div class="sign-up-screen">
+                    <span class="suc-title">
+                        Log In !
+                    </span>
+
+            <form action="#" method="POST">
+
+                <div class="suc-element">
+                    <span class="suc-sub">Name</span>
+                    <input type="text" class="suc-input"/>
+                </div>
+
+                <div class="suc-element">
+                    <span class="suc-sub">Password</span>
+                    <input type="password" class="suc-input"/>
+                </div>
+
+                <div class="suc-element"><button type="submit" class="suc-btn">Log In</button></div>
+            </form>
+        </div>
+    </div>
+
+</div>

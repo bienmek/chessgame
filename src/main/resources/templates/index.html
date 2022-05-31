@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8" />
     <link href="/css/index.css" rel="stylesheet" />
+    <link href="/css/form.css" rel="stylesheet" />
     <link href="/css/menu.css" rel="stylesheet" />
     <title>Title</title>
 </head>
 <body>
 
-    <div th:replace="/menu :: navbar">
+    <div th:replace="/fragments :: navbar"></div>
 
-    </div>
+    <div th:replace="/fragments :: login-signup"></div>
+
     <div class="center-body">
         <div class="text-body">
             <div class="main-title">
@@ -166,5 +168,7 @@
             </span>
         </div>
     </div>
+
+    <script src="#" th:src="@{/js/popup-screen.js}"></script>
 </body>
 </html>

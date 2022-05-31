@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <link href="/css/index.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style rel="stylesheet">
+  body{
+    font-family: Montserrat, sans-serif;
+    background-color: white;
+    overflow: hidden;
+  }
+  sign-up-screen{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    width: 50vh;
+    margin-left: 70vh;
+    margin-top: 20vh;
+    background-color: white;
+    border: 4px solid black;
+    z-index: 300;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input{
+    height: 5vh;
+    width: 25vw;
+    box-sizing: border-box;
+    font-size: 3vh;
+    border-radius: 8px;
+  }
+
+  button{
+    background-color: #6eaa06;
+    color: white;
+    font-size: 5vh;
+    height: 8vh;
+    width: 15vw;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  button:hover{
+    background-color: #446b03;
+    cursor: pointer;
+  }
+
+  .suc-title{
+    font-size: 7vh;
+    margin-left: 40vw;
+    font-weight: bold;
+    color:#6eaa06;
+  }
+
+  .suc-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 5vh;
+  }
+
+  .form-error{
+    font-size: 1.5vh;
+    font-weight: bold;
+    color:red;
+  }
+
+  .suc-sub{
+    font-size: 3vh;
+    font-weight: bold;
+  }
+
+  .suc-content{
+  }
+
+  .lic-content{
+    display: none;
+  }
+</style>
+  <div class="dark"> </div>
+  <div class="suc-content">
+    <div class="sign-up-screen">
+      <span class="suc-title">
+          Sign up Now !
+      </span>
+
+      <form th:action="@{/add/login}" method="POST" th:object="${user}">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="suc-element">
+          <span class="suc-sub">Name</span>
+          <input name="username" id="username" type="text" class="suc-input" placeholder="Enter a name" th:field="*{username}" required/>
+          <div th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid username</div>
+        </div>
+
+        <div class="suc-element">
+          <span class="suc-sub">E-mail</span>
+          <input name="email" id="email" type="email" class="suc-input" placeholder="Enter your email" th:field="*{email}" required/>
+          <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid email</div>
+        </div>
+
+        <div class="suc-element">
+          <span class="suc-sub">Password</span>
+          <input id="password" type="password" class="suc-input" placeholder="Enter your password" th:field="*{password}" required/>
+          <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Invalid password</div>
+        </div>
+
+        <div class="suc-element">
+          <button type="submit" class="suc-btn">Sign up</button>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+
+
+  <div class="lic-content">
+    <div class="sign-up-screen">
+                      <span class="suc-title">
+                          Log In !
+                      </span>
+
+      <form action="#" method="POST">
+
+        <div class="suc-element">
+          <span class="suc-sub">Name</span>
+          <input type="text" class="suc-input"/>
+        </div>
+
+        <div class="suc-element">
+          <span class="suc-sub">Password</span>
+          <input type="password" class="suc-input"/>
+        </div>
+
+        <div class="suc-element"><button type="submit" class="suc-btn">Log In</button></div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

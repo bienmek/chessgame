@@ -1,6 +1,7 @@
 body{
     font-family: Montserrat, sans-serif;
     background-color: #1c2841;
+    overflow: hidden;
 }
 
 h1{
@@ -18,6 +19,7 @@ h1{
 
 .chessboard {
     display: flex;
+    position: relative;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
@@ -49,6 +51,15 @@ h1{
 }
 
 .dynamic{
+    text-align: center;
+    font-size: 2vh;
+    font-weight: bold;
+    margin-top: 10vh;
+    height:2.3vh;
+    width:3.6vh;
+}
+
+.testbdd{
     text-align: center;
     font-size: 2vh;
     font-weight: bold;
@@ -90,7 +101,7 @@ h1{
 }
 
 img{
-    position: fixed;
+    position: static;
     height: 10vh;
     width: 10vh;
 }

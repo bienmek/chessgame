@@ -5,11 +5,14 @@
     <title>Title</title>
     <link href="css/menu.css" rel="stylesheet" />
     <link href="css/play.css" rel="stylesheet" />
+    <link href="css/form.css" rel="stylesheet" />
 
 </head>
 <body>
 
-    <div th:replace="/menu :: navbar"></div>
+    <div th:replace="/fragments :: navbar"></div>
+
+    <div th:replace="/fragments :: login-signup"></div>
 
 
     <div class="text-body">
@@ -154,7 +157,8 @@
     </div>
 
 
-    <script src="#" th:src="@{/js/script.js}"></script>
+    <script src="#" th:src="@{/js/play.js}"></script>
+    <script src="#" th:src="@{/js/popup-screen.js}"></script>
 
 </body>
 </html>

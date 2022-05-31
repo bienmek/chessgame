@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/menu.css" rel="stylesheet" />
+    <link href="css/form.css" rel="stylesheet" />
+    <link href="css/profil.css" rel="stylesheet" />
+    <title>Title</title>
+</head>
+<body>
+
+    <div th:replace="/fragments :: navbar"></div>
+
+    <div th:replace="/fragments :: login-signup"></div>
+
+    <div class="center-body">
+        <div class="title">Utilisateurs: </div>
+        <ul th:each="user: ${users}" th:object="${user}">
+            <li th:text="*{id}">1</li>
+            <li th:text="*{username}">Super man</li>
+            <li th:text="*{email}">aaa@aaa.aaa</li>
+            <li th:text="*{password}">azerty</li>
+        </ul>
+    </div>
+
+    <script src="#" th:src="@{/js/popup-screen.js}"></script>
+</body>
+</html>

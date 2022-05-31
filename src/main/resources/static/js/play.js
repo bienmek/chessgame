@@ -16,9 +16,6 @@ for(let i=0;i<tiles.length;++i) {
         h--
 }
 
-
-
-
 function getId(tile) {
     for(let i=0;i<tiles.length;++i) {
         const ctile = tiles.item(i);
